@@ -7,10 +7,13 @@ import { PdfService } from './pdf/pdf.service';
 import { MachineModule } from './machine/machine.module';
 import { MachinesService } from './machineservice/machineservice.service';
 import { MachinesController } from './machineservice/machineservice.controller';
+import { GeminiService } from './gemini/gemini.service';
+import { GeminiController } from './gemini/gemini.controller';
+import { GeminiModule } from './gemini/gemini.module';
 
 @Module({
-  imports: [AuthModule, PrismaModule, ConfigModule, MachineModule],
-  controllers: [PdfController, MachinesController],
-  providers: [PdfService,MachinesService],
+  imports: [AuthModule, PrismaModule, ConfigModule, MachineModule,GeminiModule],
+  controllers: [PdfController, MachinesController, GeminiController],
+  providers: [PdfService,MachinesService, GeminiService],
 })
 export class AppModule {}
