@@ -64,15 +64,19 @@ export function SignUp() {
                 <Button 
                     label="Sign Up" 
                     onClick={async () => {
-                        const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
+
+                        const response = await axios.post("http://localhost:3000/auth/signup", {
+
                             username,
                             firstName,
                             lastName,
                             phoneNumber,
                             password,
                         });
-                        localStorage.setItem("token", response.data.token);
-                        navigate("/Dashboard?name=" + response.data.username);
+
+                        localStorage.setItem("token", response);
+                        navigate("/Dashboard?name=" + username);
+
                     }} 
                     className="bg-blue-500 hover:bg-blue-700 text-white w-full py-2 rounded mt-4"
                 />
@@ -90,4 +94,7 @@ export function SignUp() {
             </div>
             </div>
     );
+
 }
+
+
