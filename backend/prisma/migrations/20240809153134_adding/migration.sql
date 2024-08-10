@@ -13,3 +13,6 @@ ADD COLUMN     "ownerId" INTEGER;
 
 -- AddForeignKey
 ALTER TABLE "Machine" ADD CONSTRAINT "Machine_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE "User" ADD COLUMN "email" TEXT DEFAULT 'unknown@example.com';
+ALTER TABLE "User" ADD COLUMN "phone" TEXT DEFAULT '0000000000';
