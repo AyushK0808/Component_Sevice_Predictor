@@ -18,13 +18,13 @@ export function SignIn(){
             <InputBox onChange={(e)=>{setUsername(e.target.value)}} id="Email" inputType="email" label="Email" placeholder="Arghya123@gmail.com"></InputBox>
             <InputBox onChange={(e)=>{setPassword(e.target.value)}} id="password" inputType="password" label="Password" placeholder="123456"></InputBox>
             <Button onClick={async ()=>{
-                const response=await axios.post("http://localhost:3000/api/v1/user/signin",{
+                const response=await axios.post("http://localhost:3000/auth/login",{
                     username,
                     password
                 })
                 
-                localStorage.setItem("token",response.data.token)
-                navigate("/Dashboard?name="+response.data.username)
+                localStorage.setItem("token",response)
+                navigate("/Dashboard")
                 
             }} label="Sign In" ></Button>
             <BottomWarning linkTo="Sign Up" link="/signUp" warningMessage="Don't have an account?"></BottomWarning>

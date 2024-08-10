@@ -22,10 +22,9 @@ export function SignUp(){
             <InputBox onChange={(e)=>{setUsername(e.target.value)}} id="Email" inputType="email" label="Email" placeholder="Arghya123@gmail.com"></InputBox>
             <InputBox onChange={(e)=>{setPassword(e.target.value)}} id="password" inputType="password" label="Password" placeholder="123456"></InputBox>
             <Button label="Sign Up" onClick={async ()=>{
-                 const response=await axios.post("http://localhost:3000/api/v1/user/signup",{
+                 const response=await axios.post("http://localhost:3000/auth/signup",{
                     username,
-                    firstName,
-                    lastName,
+                   
                     password
                 })
                 localStorage.setItem("token",response.data.token )
