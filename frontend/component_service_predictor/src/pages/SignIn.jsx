@@ -10,6 +10,7 @@ import axios from "axios";
 
 
 
+
 export function SignIn() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -18,7 +19,9 @@ export function SignIn() {
     return (
         <div className="flex justify-center items-center h-screen bg-gray-900">
             <div className="shadow-2xl p-8 rounded-lg bg-gray-800 text-white w-full max-w-md">
-                <div className="text-4xl font-bold text-gray-400 text-center pt-6">Sign Up</div>
+
+                <div className="text-4xl font-bold text-gray-400 text-center pt-6">Sign In</div>
+
                 <SubHeading label="Enter your credentials to access your account" />
                 <InputBox 
                     onChange={(e) => setUsername(e.target.value)} 
@@ -38,13 +41,17 @@ export function SignIn() {
                 />
                 <Button 
                     onClick={async () => {
-                        const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
+
+                        const response = await axios.post("http://localhost:3000/auth/login", {
+
                             username,
                             password,
                         });
 
-                        localStorage.setItem("token", response.data.token);
-                        navigate("/Dashboard?name=" + response.data.username);
+
+                        localStorage.setItem("token", response);
+                        navigate("/Dashboard?name=" + username);
+
                     }} 
                     label="Sign In" 
                     className="bg-blue-500 hover:bg-blue-700 text-white w-full py-2 rounded mt-4"
@@ -57,4 +64,5 @@ export function SignIn() {
             </div>
         </div>
     );
+
 }
