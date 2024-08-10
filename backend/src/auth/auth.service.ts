@@ -1,7 +1,7 @@
-import { Injectable, ConflictException, BadRequestException } from '@nestjs/common';
+import { Injectable, ConflictException } from '@nestjs/common';
 import { AuthPayloadDto } from './dto/auth.dto';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from 'src/prisma/prisma.service';  // Assuming Prisma is set up
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class AuthService {
@@ -23,7 +23,7 @@ export class AuthService {
     return null;
   }
 
-  async signup({ username, password }: AuthPayloadDto) {
+  async signup({ username, password, email, phone }: AuthPayloadDto) {
     const existingUser = await this.prisma.user.findUnique({
       where: { username },
     });
@@ -35,7 +35,9 @@ export class AuthService {
     const newUser = await this.prisma.user.create({
       data: {
         username,
-        password, // You should hash this password
+        password,
+        email,
+        phone,
       },
     });
 

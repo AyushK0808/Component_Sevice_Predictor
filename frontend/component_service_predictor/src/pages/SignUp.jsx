@@ -7,6 +7,7 @@ import { SubHeading } from "../components/SubHeading";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
+
 export function SignUp() {
     const [username, setUsername] = useState("");
     const [firstName, setFirstname] = useState("");
@@ -63,15 +64,19 @@ export function SignUp() {
                 <Button 
                     label="Sign Up" 
                     onClick={async () => {
+
                         const response = await axios.post("http://localhost:3000/auth/signup", {
+
                             username,
                             firstName,
                             lastName,
                             phoneNumber,
                             password,
                         });
+
                         localStorage.setItem("token", response);
                         navigate("/Dashboard?name=" + username);
+
                     }} 
                     className="bg-blue-500 hover:bg-blue-700 text-white w-full py-2 rounded mt-4"
                 />
@@ -89,4 +94,7 @@ export function SignUp() {
             </div>
             </div>
     );
+
 }
+
+

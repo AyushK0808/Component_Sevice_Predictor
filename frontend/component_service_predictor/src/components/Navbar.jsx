@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Link, useLocation } from 'react-router-dom';
 import { Avatar } from './Avatar'; // Import Avatar component
 
@@ -31,6 +32,7 @@ const Navbar = () => {
             Sign In / Sign Up
           </Link>
         )}
+
       </div>
     </nav>
   );

@@ -1,3 +1,4 @@
+
 import { Heading } from "../components/Heading";
 import { SubHeading } from "../components/SubHeading";
 import { InputBox } from "../components/InputBox";
@@ -8,6 +9,8 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 
+
+
 export function SignIn() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +19,9 @@ export function SignIn() {
     return (
         <div className="flex justify-center items-center h-screen bg-gray-900">
             <div className="shadow-2xl p-8 rounded-lg bg-gray-800 text-white w-full max-w-md">
+
                 <div className="text-4xl font-bold text-gray-400 text-center pt-6">Sign In</div>
+
                 <SubHeading label="Enter your credentials to access your account" />
                 <InputBox 
                     onChange={(e) => setUsername(e.target.value)} 
@@ -36,13 +41,17 @@ export function SignIn() {
                 />
                 <Button 
                     onClick={async () => {
+
                         const response = await axios.post("http://localhost:3000/auth/login", {
+
                             username,
                             password,
                         });
 
+
                         localStorage.setItem("token", response);
                         navigate("/Dashboard?name=" + username);
+
                     }} 
                     label="Sign In" 
                     className="bg-blue-500 hover:bg-blue-700 text-white w-full py-2 rounded mt-4"
@@ -55,4 +64,5 @@ export function SignIn() {
             </div>
         </div>
     );
+
 }
