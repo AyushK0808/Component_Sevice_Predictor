@@ -17,11 +17,11 @@ const Landing = () => {
   ];
 
   const text = [
-    'First Image Caption',
-    'Second Image Caption',
-    'Third Image Caption',
-    'Fourth Image Caption',
-  ];
+  'Real-time predictions for component failure.',
+  'Optimize machine uptime with predictive analytics.',
+  'Prevent breakdowns with proactive maintenance.',
+  'Maximize efficiency with data-driven insights.',
+];
 
   return (
     <div>
