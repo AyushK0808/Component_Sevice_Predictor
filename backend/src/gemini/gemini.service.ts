@@ -13,9 +13,21 @@ export class GeminiService {
   }
 
   async createChatCompletion(messages: ChatCompletionMessageDto[]) {
-    const prompt = messages.map(msg => msg.content).join('\n'); // Combine messages into a single prompt
+    // Combine messages into a single prompt
+    const prompt = messages.map(msg => msg.content).join('\n'); 
+
+    // Generate content using the prompt
     const result = await this.model.generateContent(prompt);
+
+    // The response might need to be accessed differently depending on the structure
     const response = await result.response;
-    return response.text();
+
+    // Check the structure of response and access the correct property
+    const responseText = typeof response.text === 'function' 
+      ? await response.text()  // If response.text is a function, call it
+      : response.text;  // Otherwise, directly access the text property
+
+    console.log(typeof(responseText));
+    return responseText;
   }
 }
