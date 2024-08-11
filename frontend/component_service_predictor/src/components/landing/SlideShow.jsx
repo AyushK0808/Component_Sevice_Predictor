@@ -28,9 +28,10 @@ const SlideShow = ({ images, text, interval = 3000 }) => {
           transition={{ duration: 0.8 }}
         />
       </AnimatePresence>
-      <div className="absolute bottom-4 right-4 px-4 py-2 rounded">
+      <div className="absolute bottom-4 right-4 max-w-xs px-4 py-2 rounded">
         <motion.p
-          className="text-6xl font-extrabold text-white leading-tight"
+          className="text-4xl font-extrabold text-white leading-tight"
+          style={{ wordBreak: 'break-word' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
