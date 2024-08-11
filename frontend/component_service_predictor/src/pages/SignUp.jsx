@@ -65,7 +65,7 @@ export function SignUp() {
                     label="Sign Up" 
                     onClick={async () => {
 
-                        const response = await axios.post("http://localhost:3000/auth/signup", {
+                        const response = await axios.post("http://localhost:3001/auth/signup", {
 
                             username,
                             firstName,
@@ -74,7 +74,7 @@ export function SignUp() {
                             password,
                         });
 
-                        localStorage.setItem("token", response);
+                        localStorage.setItem("token", response.data);
                         navigate("/Dashboard?name=" + username);
 
                     }} 

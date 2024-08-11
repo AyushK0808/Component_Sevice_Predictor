@@ -42,14 +42,14 @@ export function SignIn() {
                 <Button 
                     onClick={async () => {
 
-                        const response = await axios.post("http://localhost:3000/auth/login", {
+                        const response = await axios.post("http://localhost:3001/auth/login", {
 
                             username,
                             password,
                         });
 
 
-                        localStorage.setItem("token", response);
+                        localStorage.setItem("token", response.data);
                         navigate("/Dashboard?name=" + username);
 
                     }} 
