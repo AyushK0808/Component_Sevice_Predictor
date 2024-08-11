@@ -1,65 +1,67 @@
 import { cn } from "../../lib/utils";
 import {
-  IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
-  IconRouteAltLeft,
-  IconTerminal2,
+  IconChartLine,
+  IconLayersLinked,
+  IconFileAnalytics,
+  IconRobot,
+  IconBell,
+  IconSettingsAutomation,
+  IconTool,
+  IconUserCircle,
 } from "@tabler/icons-react";
 
 export function FeaturesSectionDemo() {
   const features = [
     {
-      title: "Built for developers",
+      title: "Predictive Analytics",
       description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <IconTerminal2 />,
+        "Anticipate component failures using historical telematics data.",
+      icon: <IconChartLine />,
     },
     {
-      title: "Ease of use",
+      title: "LSTM Model",
       description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
-      icon: <IconEaseInOut />,
+        "Utilizes an LSTM neural network to predict equipment states and breakdowns.",
+      icon: <IconLayersLinked />,
     },
     {
-      title: "Pricing like no other",
+      title: "Automated Reports",
       description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <IconCurrencyDollar />,
+        "Daily PDF reports with graphical analyses and actionable insights.",
+      icon: <IconFileAnalytics />,
     },
     {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
+      title: "24/7 Support",
+      description: "Interactive chatbot for quick issue reporting and guidance.",
+      icon: <IconRobot />,
     },
     {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
-      icon: <IconRouteAltLeft />,
-    },
-    {
-      title: "24/7 Customer Support",
+      title: "Service Reminders",
       description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
-      icon: <IconHelp />,
+        "Automated reminders based on model predictions to ensure timely maintenance.",
+      icon: <IconBell />,
     },
     {
-      title: "Money back guarantee",
+      title: "Proactive Maintenance",
       description:
-        "If you donot like EveryAI, we will convince you to like us.",
-      icon: <IconAdjustmentsBolt />,
+        "Keep your machines running efficiently with proactive measures.",
+      icon: <IconSettingsAutomation />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
-      icon: <IconHeart />,
+      title: "Feature Customization",
+      description:
+        "Tailor suggestions to extend the life of your machines.",
+      icon: <IconTool />,
+    },
+    {
+      title: "User-Friendly Interface",
+      description:
+        "Navigate and access data with ease through an intuitive UI.",
+      icon: <IconUserCircle />,
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
@@ -76,7 +78,7 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
+        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800",
         (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
         index < 4 && "lg:border-b dark:border-neutral-800"
       )}
@@ -101,4 +103,4 @@ const Feature = ({
       </p>
     </div>
   );
-};
+}

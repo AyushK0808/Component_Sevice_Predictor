@@ -4,25 +4,25 @@ import { motion } from 'framer-motion';
 const ContactInfo = () => {
   const contacts = [
     {
-      name: "John Doe",
-      role: "Customer Support",
+      name: "Ayush Kumar",
+      role: "Developer",
       email: "john.doe@example.com",
       phone: "+1 (234) 567-890",
-      location: "New York, NY"
+      location: "Hyderabad,IN"
     },
     {
-      name: "Jane Smith",
-      role: "Sales Manager",
+      name: "Arghya Ghosh",
+      role: "Developer",
       email: "jane.smith@example.com",
       phone: "+1 (987) 654-321",
-      location: "Los Angeles, CA"
+      location: "Kolkata,IN"
     },
     {
-      name: "Emily Johnson",
+      name: "Gautham S",
       role: "Technical Support",
       email: "emily.johnson@example.com",
       phone: "+1 (555) 123-4567",
-      location: "Chicago, IL"
+      location: "Bengaluru,IN"
     }
   ];
 
