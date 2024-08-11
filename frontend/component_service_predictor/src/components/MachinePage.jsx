@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 import ReadData from './ReadData';
 import ReactToPrint from 'react-to-print';
@@ -8,8 +8,15 @@ import axios from 'axios';
 // Sample data
 const data = ReadData;
 
+// Function to generate random integer between min and max (inclusive)
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
 function MachinePage({ machine, onBack }) {
   const [selectedComponent, setSelectedComponent] = useState('');
+  const [ageOfMachine, setAgeOfMachine] = useState(getRandomInt(600, 1000));
+  const [nextServiceIn, setNextServiceIn] = useState(getRandomInt(10, 30));
+  const [lastService, setLastService] = useState(getRandomInt(100, 200));
+  const [alerts, setAlerts] = useState(getRandomInt(10, 30));
 
   // Extract unique components for the given machine
   const getUniqueComponents = () => {
@@ -60,19 +67,21 @@ function MachinePage({ machine, onBack }) {
   }, {});
 
   // Ref for print content
-  const printRef = React.useRef();
+  const printRef = useRef();
 
   // Function to handle redirection
   const handleRedirect = () => {
     window.location.href = 'http://localhost:3000/';
   };
+
+  // Function to handle PDF download
   const handleDownloadPDF = async () => {
     const token = localStorage.getItem('token'); // Get JWT token from local storage
     if (!token) {
       alert('No JWT token found');
       return;
     }
-  
+
     try {
       const response = await axios.get('http://localhost:3001/pdf/generate', {
         headers: {
@@ -80,22 +89,20 @@ function MachinePage({ machine, onBack }) {
         },
         responseType: 'blob' // Ensure response is treated as binary data
       });
-  
+
       // Create a URL for the PDF blob and open it in a new tab
       const url = URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
       window.open(url);
-  
+
     } catch (error) {
       console.error('Error downloading PDF:', error);
     }
   };
-  
-  
 
   return (
     <main className='main-container'>
       <div className='main-title'>
-        <h3>{machine}</h3>
+        <h3 className='text-5xl font-extrabold dark:text-white'>{machine}</h3>
       </div>
 
       <div className='main-title'>
@@ -108,34 +115,34 @@ function MachinePage({ machine, onBack }) {
             <h3>AGE OF MACHINE</h3>
             <BsFillArchiveFill className='card_icon'/>
           </div>
-          <h1>300</h1>
+          <h1>{ageOfMachine} days</h1>
         </div>
         <div className='card'>
           <div className='card-inner'>
             <h3>NEXT SERVICE IN</h3>
             <BsFillGrid3X3GapFill className='card_icon'/>
           </div>
-          <h1>12</h1>
+          <h1>{nextServiceIn} days</h1>
         </div>
         <div className='card'>
           <div className='card-inner'>
             <h3>LAST SERVICE</h3>
             <BsPeopleFill className='card_icon'/>
           </div>
-          <h1>33</h1>
+          <h1>{lastService} days</h1>
         </div>
         <div className='card'>
           <div className='card-inner'>
             <h3>ALERTS</h3>
             <BsFillBellFill className='card_icon'/>
           </div>
-          <h1>42</h1>
+          <h1>{alerts} </h1>
         </div>
       </div>
 
       <div className='flex-row'>
         <div className="relative inline-block text-left">
-          <div className="flex justify-between items-center p-2 bg-gray-800 text-white rounded-md shadow-sm">
+          <div className="flex justify-between items-center p-2 bg-gray-800 text-white rounded shadow">
             <div className="relative">
               <select
                 value={selectedComponent}
@@ -192,8 +199,7 @@ function MachinePage({ machine, onBack }) {
               content={() => printRef.current}
             />
             <button className='redirect-button' onClick={handleRedirect}>Talk with ChatBot</button>
-            <button className='download-button' onClick={handleDownloadPDF}>Download PDF </button>
-
+            <button className='download-button' onClick={handleDownloadPDF}>Analytics</button>
             <button className='back-button' onClick={onBack}>Back to Machines</button>
           </div>
         </div>
