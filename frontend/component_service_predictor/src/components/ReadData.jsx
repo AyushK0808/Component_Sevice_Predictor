@@ -8003,31 +8003,30 @@ const originalData = [
    }
   ]
 
-const transformData = (data) => {
-  return data.reduce((acc, { Machine, Component, Time, Parameter, Value }) => {
-    if (!acc[Machine]) {
-      acc[Machine] = {};
-    }
-    if (!acc[Machine][Component]) {
-      acc[Machine][Component] = [];
-    }
-    
-    const existingTimeIndex = acc[Machine][Component].findIndex(entry => entry.Time === Time);
-    
-    if (existingTimeIndex !== -1) {
-      // Update existing entry for this time
-      acc[Machine][Component][existingTimeIndex][Parameter] = Value;
-    } else {
-      // Create new entry for this time
-      acc[Machine][Component].push({ Time: Time, [Parameter]: Value });
-    }
+  const transformData = (data) => {
+    return data.reduce((acc, { Machine, Component, Time, Parameter, Value }) => {
+      if (!acc[Machine]) {
+        acc[Machine] = {};
+      }
+      if (!acc[Machine][Component]) {
+        acc[Machine][Component] = [];
+      }
+      
+      const existingTimeIndex = acc[Machine][Component].findIndex(entry => entry.Time === Time);
+      
+      if (existingTimeIndex !== -1) {
+        // Update existing entry for this time, replace null with 0
+        acc[Machine][Component][existingTimeIndex][Parameter] = Value === null ? 0 : Value;
+      } else {
+        // Create new entry for this time with null values replaced by 0
+        acc[Machine][Component].push({ Time: Time, [Parameter]: Value === null ? 0 : Value });
+      }
+  
+      return acc;
+    }, {});
+  };
 
-    return acc;
-  }, {});
-};
-
-// Get the transformed data
-const ReadData = transformData(originalData);
+  const ReadData = transformData(originalData);
 
 // Export the transformed data
 export default ReadData;
