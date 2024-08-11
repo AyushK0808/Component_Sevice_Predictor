@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Link, useLocation } from 'react-router-dom';
 import { Avatar } from './Avatar'; // Import Avatar component
 
@@ -13,8 +12,12 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center p-5 bg-gray-800 text-white">
-      <Link to="/" className="px-4 py-2 hover:text-blue-700">
-        <h1 className="text-2xl font-bold">MyApp</h1>
+      <Link to="/" className="flex items-center px-4 py-2 hover:text-blue-700">
+        <img
+          src="https://w7.pngwing.com/pngs/511/1013/png-transparent-caterpillar-logo-screenshot-caterpillar-inc-caterpillar-marine-power-systems-bulldozer-caterpillar-logistics-services-uk-ltd-cat-logo-text-sign-business-thumbnail.png"
+          alt="Caterpillar Logo"
+          className="w-24 h-auto"
+        />
       </Link>
       <div className="flex items-center">
         {userName ? (
@@ -32,7 +35,6 @@ const Navbar = () => {
             Sign In / Sign Up
           </Link>
         )}
-
       </div>
     </nav>
   );
