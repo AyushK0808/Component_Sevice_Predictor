@@ -1,1 +1,1 @@
-Potential breakdown on day 27 due to Misc_Exhaust Gas Temparature: 220.02114868164062
+Potential breakdown on day 3 due to Misc_Exhaust Gas Temparature: 228.6685028076172

@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 
 
+
 def prepare_data(data, look_back=30):
     # Convert the 'Time' column to datetime format
     data['DateTime'] = pd.to_datetime(data['Time'])
@@ -72,7 +73,7 @@ def predict_breakdown(model, last_sequence, scaler, thresholds, column_names, da
     predictions = scaler.inverse_transform(np.array(predictions))
     breakdown_occurred = False
 
-    with open(output_file, "w") as f:  # Open the file in write mode
+    with open(output_file, "w") as f:  
         for day, prediction in enumerate(predictions):
             if breakdown_occurred:
                 break
@@ -82,7 +83,7 @@ def predict_breakdown(model, last_sequence, scaler, thresholds, column_names, da
                     if prediction[i] < low or prediction[i] >= high:
                         output = f"Potential breakdown on day {day+3} due to {col}: {prediction[i]}"
                         print(output)
-                        f.write(output + "\n")  # Write the output to the file
+                        f.write(output + "\n")  
                         pred = prediction[i]
                         breakdown_occurred = True
                         return day, pred
