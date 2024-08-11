@@ -3,28 +3,28 @@ import { cn } from "../../lib/utils";
 
 const cardData = [
   {
-    title: "Card 1",
-    description: "This card shows background gifs on hover.",
+    title: "Predictive Maintenance",
+    description: "Anticipate component failures before they occur with our predictive model.",
     bgImage:
-      "https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
+      "articulated.png",
     hoverGif:
-      "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif",
+      "farmer.jpg",
   },
   {
-    title: "Card 2",
-    description: "Another card with a cool hover effect.",
+    title: "Automated Reports",
+    description: "Receive daily PDF reports with insights and recommendations.",
     bgImage:
-      "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
+      "autorep2.jpg",
     hoverGif:
-      "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWx3c2Z5b2Ixem11Z29hNDhiYTdwbm8wcW5mYXYzbHkydHc2ZWppYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l4FGpP4lxGGgK5CBW/giphy.gif",
+      "autorep.jpg",
   },
   {
-    title: "Card 3",
-    description: "Hover over to see a nice gif.",
+    title: "24/7 Chatbot Support",
+    description: "Get instant assistance with our integrated chatbot.",
     bgImage:
       "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
     hoverGif:
-      "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTJncjE3NzNjOWxnb3l6MmhnYWU0ZXRuMjI2NWltdG5hdms3b3llaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6ZsXmDBAOi2WT2CQ/giphy.gif",
+      "tractor.jpg",
   },
 ];
 
