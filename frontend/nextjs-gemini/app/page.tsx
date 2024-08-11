@@ -1,7 +1,7 @@
 "use client"
 
-import { ChatCompletionMessage } from "./chat-completion-message.interface";
 import { useState } from "react";
+import { ChatCompletionMessage } from "./chat-completion-message.interface";
 import { createChatCompletion } from "./createChatCompletion";
 
 export default function Home() {
@@ -19,12 +19,12 @@ export default function Home() {
     setMessage("");
 
     try {
-      const response = await createChatCompletion;
+      const response = await createChatCompletion(userMessage.content);
       console.log('Full API response:', response);
 
       const botMessage: ChatCompletionMessage = {
         role: "assistant",
-        content: response.toString() || "No response",
+        content: response || "No response",
       };
 
       setMessages([...updatedMessages, botMessage]);
@@ -60,7 +60,7 @@ export default function Home() {
         value={message}
         onChange={(event) => setMessage(event.target.value)}
         onKeyDown={async (event) => {
-          if (event.key === "Enter") {
+          if (event.key === "Enter" && message.trim()) {
             await handleMessage();
           }
         }}
