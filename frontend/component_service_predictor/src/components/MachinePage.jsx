@@ -71,7 +71,7 @@ function MachinePage({ machine, onBack }) {
 
   // Function to handle redirection
   const handleRedirect = () => {
-    window.location.href = 'http://localhost:3000/';
+    window.location.href = 'https://component-sevice-predictor-chatbot.vercel.app/';
   };
 
   // Function to handle PDF download
