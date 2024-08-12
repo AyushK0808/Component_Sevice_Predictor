@@ -6,7 +6,7 @@ export class PythonService {
   async readRequirementsFile(): Promise<string> {
     try {
 
-      const filePath = '/home/cybrosys/Music/Component_Sevice_Predictor/ml/predictions.txt';
+      const filePath = '../ml/predictions.txt';
       const fileContents = await this.readFile(filePath);
      //console.log('Requirements:', fileContents);
       return fileContents;
